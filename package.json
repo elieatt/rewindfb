@@ -5,11 +5,18 @@
   "description": "See the first posts and reels of any Facebook page, oldest first, or jump to any date.",
   "license": "GPL-3.0-or-later",
   "author": "Elie Attieh",
+  "homepage": "https://github.com/elieatt/rewindfb",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elieatt/rewindfb.git"
+  },
+  "bugs": "https://github.com/elieatt/rewindfb/issues",
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
     "watch": "node build.mjs --watch",
     "icons": "node scripts/icons.mjs",
+    "package": "npm run build && node scripts/package.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write .",
@@ -24,6 +31,7 @@
     "esbuild": "^0.28.2",
     "eslint": "^10.11.0",
     "eslint-config-prettier": "^10.1.8",
+    "fflate": "^0.8.3",
     "globals": "^17.12.0",
     "prettier": "^3.9.9",
     "typescript": "^6.0.3",

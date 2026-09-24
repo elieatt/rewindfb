@@ -4,6 +4,7 @@
   "short_name": "Rewind",
   "version": "0.2.0",
   "description": "See the first posts and reels of any Facebook page, oldest first, or jump to any date. Not affiliated with Meta.",
+  "homepage_url": "https://github.com/elieatt/rewindfb",
   "minimum_chrome_version": "111",
   "icons": {
     "16": "icons/icon-16.png",
