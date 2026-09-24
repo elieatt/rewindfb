@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Rewind icon: a feed post with a rewind badge. Used at 48 px and up; see icon-small.svg for 16 and 32 px. -->
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#1E3A8A"/>
+    </linearGradient>
+    <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF9A3D"/>
+      <stop offset="1" stop-color="#EE4B2B"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#tile)"/>
+  <!-- The post behind, then the post in front: avatar, name, two lines of text. -->
+  <rect x="32" y="20" width="76" height="62" rx="10" fill="#fff" opacity=".4"/>
+  <rect x="18" y="32" width="80" height="72" rx="12" fill="#fff"/>
+  <circle cx="35" cy="50" r="9" fill="#93C5FD"/>
+  <rect x="50" y="44" width="36" height="6" rx="3" fill="#CBD5E1"/>
+  <rect x="50" y="54" width="22" height="5" rx="2.5" fill="#E2E8F0"/>
+  <rect x="28" y="70" width="58" height="6" rx="3" fill="#CBD5E1"/>
+  <rect x="28" y="82" width="42" height="6" rx="3" fill="#CBD5E1"/>
+  <!-- Rewind badge. -->
+  <circle cx="96" cy="96" r="25" fill="url(#badge)" stroke="#fff" stroke-width="5"/>
+  <g fill="#fff" stroke="#fff" stroke-width="3.5" stroke-linejoin="round">
+    <path d="M95 86 V106 L81 96 Z"/>
+    <path d="M110 86 V106 L96 96 Z"/>
+  </g>
+</svg>

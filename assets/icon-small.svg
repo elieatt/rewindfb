@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Rewind icon simplified for 16 and 32 px, where the post's details would blur: a card with rewind arrows. -->
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#1E3A8A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#tile)"/>
+  <rect x="16" y="22" width="96" height="84" rx="16" fill="#fff"/>
+  <g fill="#F2542D" stroke="#F2542D" stroke-width="7" stroke-linejoin="round">
+    <path d="M62 44 V84 L34 64 Z"/>
+    <path d="M94 44 V84 L66 64 Z"/>
+  </g>
+</svg>
