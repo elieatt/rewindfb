@@ -50,6 +50,10 @@ page's own feed request, then replays it with different dates:
 Every window is read completely, so the results are complete and in order up to where reading
 stopped. That is what lets **Next N** continue exactly where the list ended.
 
+## Privacy
+
+Rewind collects nothing: no server, no analytics, no tracking. See the [privacy policy](PRIVACY.md).
+
 ## Limits
 
 - Reels are found through the page's feed. A reel that was only ever posted to the Reels tab is missed.
