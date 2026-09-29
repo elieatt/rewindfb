@@ -15,7 +15,10 @@ or everything **from a date you pick**, in seconds instead of hours of scrolling
 
 ## Install
 
-Rewind isn't on the Chrome Web Store yet. To install it from source:
+**[Add Rewind to Chrome](https://chromewebstore.google.com/detail/rewind-for-facebook/gncomcangpcmnjkcpgkgefemnihcmobf)**
+from the Chrome Web Store. It also works in Brave, Opera, Vivaldi and Edge.
+
+### From source
 
 ```sh
 npm install
