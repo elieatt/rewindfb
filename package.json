@@ -1,6 +1,6 @@
 {
   "name": "rewind-for-facebook",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "See the first posts and reels of any Facebook page, oldest first, or jump to any date.",
   "license": "GPL-3.0-or-later",
