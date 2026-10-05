@@ -4,7 +4,7 @@
 // blocks changes, so a click never lands on a node that is being replaced.
 
 import { currentPath } from '../capture';
-import { FB_START } from '../constants';
+import { FB_START, REVIEWS_URL } from '../constants';
 import { activeJob, currentPageKind, loadMore, stopActiveJob } from '../controller';
 import { csvFileName, linksText, toCsv } from '../export';
 import { formatClock, formatDate, formatTime, plural, timeAgo } from '../format';
@@ -266,6 +266,17 @@ function resultsBlocks(view: PageView, job: Job | null, partial: boolean): HTMLE
     clearView(currentPath());
   });
   blocks.push(h('div', { class: 'actions' }, copy, download, clear));
+  // Asked right after the tool did its job, once, never during a search or on errors.
+  if (!partial) {
+    blocks.push(
+      h(
+        'div',
+        { class: 'review' },
+        'Enjoying Rewind? ',
+        h('a', { href: REVIEWS_URL, target: '_blank', rel: 'noopener' }, 'Leave a review ⭐'),
+      ),
+    );
+  }
   return blocks;
 }
 

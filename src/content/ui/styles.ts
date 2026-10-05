@@ -118,4 +118,7 @@ summary { cursor: pointer; color: var(--muted); font-size: 12px; font-weight: 60
 .log time { color: var(--faint); margin-right: 8px; }
 
 footer { padding: 8px 16px; border-top: 1px solid var(--line); color: var(--faint); font-size: 11.5px; }
+footer a, .review a { color: var(--accent); font-weight: 600; text-decoration: none; }
+footer a:hover, .review a:hover { text-decoration: underline; }
+.review { text-align: center; color: var(--muted); font-size: 12px; }
 `;

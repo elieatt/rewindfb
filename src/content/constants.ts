@@ -1,3 +1,7 @@
+export const STORE_URL =
+  'https://chromewebstore.google.com/detail/rewind-for-facebook/gncomcangpcmnjkcpgkgefemnihcmobf';
+export const REVIEWS_URL = `${STORE_URL}/reviews`;
+
 /** Facebook's posts-feed query. Unlike the Reels tab query, it accepts afterTime/beforeTime. */
 export const FEED_QUERY = 'ProfileCometTimelineFeedRefetchQuery';
 

@@ -2,6 +2,7 @@
 
 import { TOGGLE } from '../../shared/messages';
 import { currentPath } from '../capture';
+import { REVIEWS_URL } from '../constants';
 import { activeJob, currentPageKind } from '../controller';
 import { utcOffsetLabel } from '../format';
 import { pageName } from '../page-info';
@@ -16,7 +17,8 @@ interface Panel {
   form: Form;
   pageLabel: HTMLElement;
   body: HTMLElement;
-  footer: HTMLElement;
+  /** The footer's text; the footer also holds a fixed review link. */
+  footerNote: HTMLElement;
 }
 
 let panel: Panel | null = null;
@@ -47,7 +49,14 @@ function buildPanel(): Panel {
   const form = createForm();
   const pageLabel = h('div', { class: 'page' });
   const body = h('div', { class: 'body', 'aria-live': 'polite' });
-  const footer = h('footer');
+  const footerNote = h('span');
+  const footer = h(
+    'footer',
+    {},
+    footerNote,
+    ' ',
+    h('a', { href: REVIEWS_URL, target: '_blank', rel: 'noopener' }, 'Rate Rewind'),
+  );
   const close = h(
     'button',
     { type: 'button', class: 'icon-btn', title: 'Close (Esc)', 'aria-label': 'Close' },
@@ -69,7 +78,7 @@ function buildPanel(): Panel {
 
   root.append(h('style', {}, PANEL_CSS), dialog);
   document.documentElement.append(host);
-  return { host, form, pageLabel, body, footer };
+  return { host, form, pageLabel, body, footerNote };
 }
 
 let renderQueued = false;
@@ -95,7 +104,7 @@ function tick(): void {
 
 function render(): void {
   if (!panel || !isOpen()) return;
-  const { host, form, pageLabel, body, footer } = panel;
+  const { host, form, pageLabel, body, footerNote } = panel;
   lastDark = isDarkTheme();
   lastPath = currentPath();
   host.dataset.theme = lastDark ? 'dark' : 'light';
@@ -113,7 +122,7 @@ function render(): void {
   }
   updateMoreProgress(view);
   reveal(body, view);
-  footer.textContent = `Times in your time zone (${utcOffsetLabel()}). Reels are found through the page’s feed.`;
+  footerNote.textContent = `Times in your time zone (${utcOffsetLabel()}). Reels are found through the page’s feed.`;
 }
 
 /** Scrolls the body to what the last action asked to show. */

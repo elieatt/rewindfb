@@ -1,0 +1,41 @@
+name: Release
+
+# Runs when a version tag is pushed: npm version patch|minor|major && git push --follow-tags
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write # to create the GitHub Release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      EXTENSION_ID: gncomcangpcmnjkcpgkgefemnihcmobf
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+
+      - name: Check the tag matches package.json
+        run: test "v$(node -p "require('./package.json').version")" = "$GITHUB_REF_NAME"
+
+      - run: npm run package
+
+      - name: Upload to the Chrome Web Store and submit for review
+        # With no command, the CLI uploads and then publishes (submits for review).
+        run: npx --yes chrome-webstore-upload-cli@3 --source "rewind-for-facebook-${GITHUB_REF_NAME#v}.zip"
+        env: # EXTENSION_ID comes from the job's env
+          CLIENT_ID: ${{ secrets.CWS_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CWS_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CWS_REFRESH_TOKEN }}
+
+      - name: Create the GitHub Release
+        run: gh release create "$GITHUB_REF_NAME" "rewind-for-facebook-${GITHUB_REF_NAME#v}.zip" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}
