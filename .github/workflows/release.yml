@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       EXTENSION_ID: gncomcangpcmnjkcpgkgefemnihcmobf
+      PUBLISHER_ID: ${{ vars.CWS_PUBLISHER_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,9 +29,10 @@ jobs:
       - run: npm run package
 
       - name: Upload to the Chrome Web Store and submit for review
-        # With no command, the CLI uploads and then publishes (submits for review).
-        run: npx --yes chrome-webstore-upload-cli@3 --source "rewind-for-facebook-${GITHUB_REF_NAME#v}.zip"
-        env: # EXTENSION_ID comes from the job's env
+        # The CLI is an exact-pinned dev dependency, so this runs the version in package-lock.json.
+        # With no command, it uploads and then publishes (submits for review).
+        run: npx chrome-webstore-upload --source "rewind-for-facebook-${GITHUB_REF_NAME#v}.zip"
+        env: # EXTENSION_ID and PUBLISHER_ID come from the job's env
           CLIENT_ID: ${{ secrets.CWS_CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CWS_CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.CWS_REFRESH_TOKEN }}
